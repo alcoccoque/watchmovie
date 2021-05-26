@@ -30,6 +30,7 @@ def get_cast_info(c: object) -> tuple:
     :param c: details cast object
     :return: tuple of details about cast
     """
+    print("\n\n CAST IFO START \n\n")
     cast_ids = list(map(lambda x: x['id'], c))
     p = [person.details(i) for i in cast_ids]
     cast_names = list(map(lambda x: x['name'], c))
@@ -77,7 +78,7 @@ def get_movie_info(r: object) -> tuple:
         runtime = str(round(x / 60)) + " hour(s) " + str((x % 60)) + " min(s)"
     status = x if (x := r.status) else "Unknown"
     movie_id = r.id
-    return title, poster, popularity, genres,  overview, vote_average, \
+    return title, poster, popularity, genres, overview, vote_average, \
            vote_count, release_date, runtime, status, movie_id
 
 
@@ -87,22 +88,22 @@ def get_reviews_info(r: object) -> tuple:
     :param r: details tdbm object
     :return: tuple of details about reviews
     """
-    imdb_id = x if (x := r.imdb_id) else None
+
+    imdb_id = r.imdb_id
     # web scraping to get user reviews from IMDB site
     sauce = urllib.request.urlopen('https://www.imdb.com/title/{}/reviews?ref_=tt_ov_rt'.format(imdb_id)).read()
-    soup = bs.BeautifulSoup(sauce, 'lxml')
+    soup = bs.BeautifulSoup(sauce, 'html.parser')
     soup_result = soup.find_all("div", {"class": "text show-more__control"})
-
     reviews_list = []  # list of reviews  
     reviews_status = []  # list of comments (good or bad)
     for reviews in soup_result:
         if reviews.string and len(reviews.string) < 1000:
-	    reviews_list.append(reviews.string)
-	    # passing the review to our model
-	    movie_review_list = np.array([reviews.string])
-	    movie_vector = vectorizer.transform(movie_review_list)
-	    pred = clf.predict(movie_vector)
-	    reviews_status.append('positive' if pred else 'negative')
+            reviews_list.append(reviews.string)
+            # passing the review to our model
+            movie_review_list = np.array([reviews.string])
+            movie_vector = vectorizer.transform(movie_review_list)
+            pred = clf.predict(movie_vector)
+            reviews_status.append('positive' if pred else 'negative')
 
     # combining reviews and comments into a dictionary
     movie_reviews = {reviews_list[i]: reviews_status[i] for i in range(len(reviews_list))}
@@ -110,9 +111,7 @@ def get_reviews_info(r: object) -> tuple:
         return movie_reviews
     else:
         movie_reviews = {"status": "Sorry, there are no comments yet!"}
-    	return movie_reviews
-
-
+        return movie_reviews
 
 def get_recommends_info(r: object) -> tuple:
     """
@@ -121,7 +120,7 @@ def get_recommends_info(r: object) -> tuple:
     :return: tuple of details about recommended movies
     """
     rec_films = movie.recommendations(r.id)
-    # rec_films_title = list(map(lambda x: x.title, movie_cast))
+    rec_films_title = list(map(lambda x: x.original_title, rec_films))
     rec_films_id = list(map(lambda x: x.id, rec_films))
     rec_films_popularity = list(map(lambda x: round(x.popularity, 1), rec_films))
     rec_films_average = list(map(lambda x: round(x.vote_average, 1), rec_films))
@@ -129,7 +128,7 @@ def get_recommends_info(r: object) -> tuple:
                              if rec_film.poster_path else '../static/img/poster.jpg' for rec_film in rec_films]
     genre_ids = [item.genre_ids for item in rec_films]
     rec_films_genres = [list(map(lambda x: genres[int(x)], genre))[:3] for genre in genre_ids]
-    movie_cards = zip(rec_films, rec_films_poster_path, rec_films_popularity, rec_films_genres,
+    movie_cards = zip(rec_films_title, rec_films_poster_path, rec_films_popularity, rec_films_genres,
                       rec_films_average, rec_films_id)
     return movie_cards
 
@@ -188,20 +187,16 @@ def get_info(r: object, c: list) -> tuple:
         # movie info
         title, poster, popularity, genres, overview, vote_average, \
         vote_count, release_date, runtime, status, movie_id = get_movie_info(r)
-        print(title)
-        print(poster)
-        print(genres)
-        print(movie_id)
+
         # cast info
         casts, cast_details = get_cast_info(c)
-        print(casts)
-        print(cast_details)
+
         # reviews
         movie_reviews = get_reviews_info(r)
-        print(movie_reviews)
+
         # recommended films
         movie_cards = get_recommends_info(r)
-        print(movie_reviews)
+
         return title, poster, popularity, genres, overview, vote_average, vote_count, release_date, runtime, \
                status, movie_id, casts, cast_details, movie_reviews, movie_cards
 

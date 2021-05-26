@@ -29,15 +29,28 @@ class UserModelCase(unittest.TestCase):
         self.assertFalse(u.check_password('pass'))
         self.assertTrue(u.check_password('PASS'))
 
-    def test_login(self):
-        tester = app.test_client(self)
-        response = tester.get('/auth/login', content_type='html/text')
-        self.assertEqual(response.status_code, 200)
+    def test_make_unique_nickname(self):
+        u = User(nickname='jo', email='john@example.com')
+        db.session.add(u)
+        db.session.commit()
+        nickname = User.make_unique_nickname('john')
+        assert nickname != 'john'
+        u = User(nickname=nickname, email='susan@example.com')
+        db.session.add(u)
+        db.session.commit()
+        nickname2 = User.make_unique_nickname('john')
+        assert nickname2 != 'john'
+        assert nickname2 != nickname
 
-    def test_register(self):
-        tester = app.test_client(self)
-        response = tester.get('/auth/register', content_type='html/text')
-        self.assertEqual(response.status_code, 200)
+    def test_login_logout(self):
+        rv = self.login('admin', 'default')
+        assert 'You were logged in' in rv.data
+        rv = self.logout()
+        assert 'You were logged out' in rv.data
+        rv = self.login('adminx', 'default')
+        assert 'Invalid username' in rv.data
+        rv = self.login('admin', 'defaultx')
+        assert 'Invalid password' in rv.data
 
 class MainModelCase(unittest.TestCase):
 

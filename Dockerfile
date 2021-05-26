@@ -1,7 +1,7 @@
 FROM python:3.9
-WORKDIR /heroku
+WORKDIR /watchmovie
 COPY requirements.txt /
 RUN pip3 install --upgrade pip -r requirements.txt
-COPY . /heroku
+COPY . /watchmovie
 EXPOSE 5000
 
