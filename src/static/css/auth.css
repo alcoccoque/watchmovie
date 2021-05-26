@@ -1,0 +1,75 @@
+.auth-body{
+    padding: 0 30vw;
+    height: 100vh;
+    display:grid;
+    place-items:center;
+    background-size: cover;
+}
+.popcorn{
+    background-image: url("/static/img/popcorn.jpg");
+}
+.popcorn-glasses{
+    background-image: url("/static/img/popcorn-glasses.jpg");
+}
+.recommend-tickets{
+    background-image: linear-gradient(90deg,
+                                      rgba(0,0,0,0.8015581232492998) 10%,
+                                      rgba(255,255,255,0) 50%,
+                                      rgba(0,0,0,0.700717787114846) 100%),
+    url("/static/img/tickets.jpg");
+}
+.glass-form{
+    min-height:35vh;
+    margin: 12vh 0 0 0;
+    backdrop-filter: blur( 4.5px );
+    -webkit-backdrop-filter: blur( 4.5px );
+    background: rgba( 255, 250, 255, 0.3);
+    border: 1px solid white;
+    border-radius: 40px;
+}
+.glass-form p {
+    color: black;
+    font-size: 3.5vh;
+    font-weight: 600;
+}
+label {
+    color: black;
+    font-size: 2vh;
+    font-weight: 500;
+    margin: 0 0 1.5vh 0;
+}
+.label-small {
+    color: black;
+    font-size: 18px;
+    font-weight: 500;
+}
+.form-register {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    padding: 1.5vh 1vw;
+    color:black;
+}
+.marg5{
+    margin: 10vh 0 0 0;
+}
+@media only screen and (max-width: 1200px) {
+    .auth-body{
+        padding: 0 20vw;
+        height: 100vh;
+        display:grid;
+        place-items:center;
+        background-size: cover;
+    }
+    .glass-form p {
+        color: black;
+        font-size: 2.5vh;
+        font-weight: 600;
+    }
+    label {
+        color: black;
+        font-size: 2vh;
+        font-weight: 500;
+        margin: 0 0 1.5vh 0;
+    }
+}

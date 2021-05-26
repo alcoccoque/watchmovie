@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+{% block head %}
+  <script src="https://kit.fontawesome.com/a0043d9bc2.js" crossorigin="anonymous"></script>
+{% endblock %}
+{% block title %}
+    Movie
+{% endblock %}
+{% block content %}
+<body id="content">
+	<div class="results">
+	    <center>
+	      <h2 id="name" class="text-uppercase">{{title}}</h2>
+	    </center>
+	</div>
+	<br>
+
+<div id="mycontent">
+    <div id="mcontent">
+      <div class="poster-lg">
+        <img class="poster" style="border-radius: 40px;margin-left: 90px;" height="400" width="250" src={{poster}}>
+      </div>
+      <div class="poster-sm text-center">
+        <img class="poster" style="border-radius: 40px;margin-bottom: 5%;" height="400" width="250" src={{poster}}>
+      </div>
+      <div id="details">
+        <br/>
+        <h6 id="title" style="color:white;">TITLE: &nbsp;{{title}}</h6>
+        <h6 id="overview" style="color:white;max-width: 40%">OVERVIEW: <br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{overview}}</h6>
+        <h6 id="vote_average" style="color:white;">RATING: &nbsp;{{vote_average}}/10 ({{vote_count}} votes)</h6>
+        <h6 id="genres" style="color:white;">GENRE: &nbsp;{{genres}}</h6>
+        <h6 id="date" style="color:white;">RELEASE DATE: &nbsp;{{release_date}}</h6>
+        <h6 id="runtime" style="color:white;">RUNTIME: &nbsp;{{runtime}}</h6>
+        <h6 id="status" style="color:white;">STATUS: &nbsp;{{status}}</h6>
+      </div>
+    </div>
+</div>
+<br/>
+
+
+
+
+
+{% for name, details in cast_details.items() if not cast_details.hidden %}
+  <div class="modal fade" id="{{details[0]}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #e50914;color: white;">
+          <h5 class="modal-title" id="exampleModalLabel3">{{name}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" style="color: white">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <img class="profile-pic" src="{{details[1]}}" alt="{{name}} - profile" style="width: 250px;height:400px;border-radius: 10px;" />
+          <div style="margin-left: 20px">
+            <p><strong>Birthday:</strong> {{details[2]}} </p>
+            <p><strong>Place of Birth:</strong> {{details[3]}} </p>
+            <p>
+              <p><strong>Biography:</strong><p>
+              {{details[4]}}
+            </p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  
+  
+
+  {% if casts|length > 1 %}
+
+  <div class="movie-content">
+        {% for name, details in casts.items() if not casts.hidden %}
+		<div class="swiper-slide" onclick="recommendcard(this)">
+          <div class="castcard card" style="width: 15rem;" title="Click to know more about {{name}}" data-toggle="modal" data-target="#{{details[0]}}">
+            <div class="imghvr">
+              <img class="card-img-top cast-img" id="{{details[0]}}" height="360" width="240" alt="{{name}} - profile" src="{{details[2]}}">
+              <figcaption class="fig">
+                <button class="card-btn btn btn-danger"> Know More </button>
+              </figcaption>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{name|title}}</h5>
+              <h5 class="card-title"><span style="color:#756969;font-size: 20px;">Character: {{details[1]|title}}</span></h5>
+            </div>
+          </div>
+		</div>
+      {% endfor %}
+    </div>
+{% endif %}
+
+
+
+
+  <center>
+    {% if reviews %}
+    <h2 style="color:white">USER REVIEWS</h2>
+     <div class="col-md-12" style="margin: 0 auto; margin-top:25px;">
+        <table class="table table-bordered" bordercolor="white" style="color:white">
+            <thead>
+                <tr>
+                    <th class="text-center" scope="col" style="width: 75%">Comments</th>
+                    <th class="text-center" scope="col">Sentiments</th>
+                </tr>
+            </thead>
+    
+            <tbody>
+		      {% for review, status in reviews.items() if not reviews.hidden %}
+		      <tr style="background-color:#e5091485;">
+              	  <td>{{review}}</td>
+	              <td><center>
+	                  {{status}} : 
+	                  {% if status =='Good' %}
+	                    &#128515;
+	                  {% else %}
+	                    &#128534;
+	                  {% endif %}
+	                </center>
+	              </td>
+          		</tr>
+      			{% endfor %}
+    		</tbody>
+ 		 </table>
+    </div>
+    {% else %}
+    <div style="color:white;">
+      <h1 style="color:white"> This movie is not released yet. Stay tuned! </h1>
+    </div>
+    {% endif %}
+  </center>
+
+    <div class="slider-block">
+    <button type="button" id="moveLeft" class="btn-nav">
+      ᐊ
+    </button>
+    <div class="slider" id="mySlider">
+        {% for item in movie_cards if not movie_cards.hidden %}
+      <div class="film" id="movie0" title="{{item[1]}}" onclick="recommendcard(this)">
+        <img alt="{{item[1]}} - poster" src={{item[0]}}>
+        <div class="description">
+          <div class="description__buttons-container">
+            <div class="description__button"><i class="fas fa-plus"></i></div>
+            <div class="description__button"><i class="fas fa-thumbs-up"></i></div>
+            <div class="description__button"><i class="fas fa-thumbs-down"></i></div>
+          </div>
+          <div class="description__text-container">
+            <span class="description__rating">item[2]</span>
+            <span class="description__length">item[3]</span>
+            <br><br>
+            <span>item[3][0]</span>
+            <span>&middot;</span>
+            <span>item[3][1]</span>
+            <span>&middot;</span>
+            <span>item[3][2]</span>
+          </div>
+        </div>
+      </div>
+        {% endfor %}
+    </div>
+    <button type="button" id="moveRight" class="btn-nav">
+      ᐅ
+    </button>
+  </div>
+  <script src="{{ url_for('static', filename='js/slider.js') }}"></script>
+  <script type="text/javascript" src="{{url_for('static', filename='recommend.js')}}"></script>
+
+</body>
+{% endblock %}

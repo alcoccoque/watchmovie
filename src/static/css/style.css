@@ -1,0 +1,168 @@
+* {
+     box-sizing: border-box;
+}
+img {
+     max-width: 100%;
+     height: auto;
+}
+html {
+margin: 0;
+padding: 0;
+background-color: white;
+}
+.login-input {
+  width: 130px;
+}
+
+
+.form-button {
+  width: 80px;
+  height: 35px;
+}
+.main-img{
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    display:grid;
+    background-image: linear-gradient(90deg,
+                                      rgba(0,0,0,0.8015581232492998) 10%,
+                                      rgba(0,0,0,0.3) 50%,
+                                      rgba(0,0,0,0.700717787114846) 100%),
+    url("/static/img/popcorn-red-glasses.jpg");
+    background-size: cover;
+}
+.collection {
+    height: 100vh;
+    display:grid;
+    background-image: linear-gradient(90deg,
+                                      rgba(0,0,0,0.8015581232492998) 10%,
+                                      rgba(0,0,0,0.55) 50%,
+                                      rgba(0,0,0,0.700717787114846) 100%),
+    url("/static/img/collections_of_films.jpg");
+    background-size: cover;
+}
+.tickets {
+    height: 100vh;
+    display:grid;
+    background-image: linear-gradient(90deg,
+                                      rgba(0,0,0,0.8015581232492998) 10%,
+                                      rgba(0,0,0,0.2) 50%,
+                                      rgba(0,0,0,0.700717787114846) 100%),
+    url("/static/img/tickets.jpg");
+    background-size: cover;
+}
+.reset_pass{
+    height: 100vh;
+    display:grid;
+    background-image: linear-gradient(90deg,
+                                      rgba(0,0,0,0.8015581232492998) 10%,
+                                      rgba(255,255,255,0) 50%,
+                                      rgba(0,0,0,0.700717787114846) 100%),
+    url("/static/img/characters1.jpg");
+    background-size: cover;
+}
+.reset_pass_req {
+    height: 100vh;
+    display:grid;
+    background-image: linear-gradient(90deg,
+                                      rgba(0,0,0,0.8015581232492998) 10%,
+                                      rgba(255,255,255,0) 50%,
+                                      rgba(0,0,0,0.700717787114846) 100%),
+    url("/static/img/characters2.jpg");
+    background-size: cover;
+}
+.hero-body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15vh 12vw;
+    justify-content: space-between;
+}
+
+.signup-box {
+  margin: auto;
+  width: 325px;
+  backdrop-filter: blur( 4.5px );
+  -webkit-backdrop-filter: blur( 4.5px );
+  background: rgba( 255, 250, 255, 0.2);
+  border: 1px solid white;
+  border-radius: 20px;
+}
+
+.settings-box {
+  margin: auto;
+  width: 325px;
+}
+
+.signup-area {
+  padding: 30px;
+}
+
+.settings-area {
+  padding: 30px;
+}
+
+.signup-area{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  overflow: hidden;
+  position: relative;
+}
+.signup-area h1 {
+    margin: 0 0 2vh 0;
+}
+
+input {
+    padding: 12px;
+    border-radius: 18px;
+    border: none;
+}
+    .butt{
+    margin: 1vh 0 0 0;
+    padding: 6px;
+    width:75%;
+    border-radius: 18px;
+    color: white;
+    text-align: center;
+    border: 1px white solid;
+    background: rgba( 0, 0, 0, 0.15 )
+}
+.butt:hover {
+	cursor: pointer;
+	background: rgba( 255, 255, 255, 0.65 );
+}
+.buttt {
+   font-size: 16px;
+    padding: 6px 14px;
+    border-radius: 18px;
+    color: white;
+    text-align: center;
+    border: 1px white solid;
+    background: rgba( 0, 0, 0, 0.15 )
+}
+.buttt:hover {
+	cursor: pointer;
+	background: rgba( 255, 255, 255, 0.65 );
+}
+a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.large-font{
+    font-size: 3vw;
+    color:white;
+    font-weight: 700;
+}
+.signup-area .title{
+color:white;
+}
+.form-control {
+    border-radius: 18px;
+    border: none;
+    padding: 20px 8px;
+}
+.tickets div{
+    padding: 2vh 4vw;
+}

@@ -1,0 +1,39 @@
+.navbar {
+    padding: 0;
+    margin: 2vh 12vw 0 12vw;
+    background:transparent;
+    display:flex;
+    justify-content: space-between;
+}
+.navbar img {
+    max-height: 3rem;
+}
+.navbar-collapse {
+    justify-content:flex-end;
+}
+.navbar-expand-md .navbar-nav .nav-link{
+    background: rgba( 0, 0, 0, 0.05 );
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 1vh 2.5vw;
+}
+.navbar-nav li:nth-child(1), .navbar-nav li:nth-child(2), .navbar-nav li:nth-child(3), .navbar-nav li:nth-child(4){
+    margin: 0 2vw 0 0;
+}
+.navbar-expand-md .navbar-nav .nav-link:hover{
+	cursor: pointer;
+	background: rgba( 255, 255, 255, 0.65 );
+    color:black;
+}
+@media only screen and (max-width: 1200px) {
+    .navbar {
+        padding: 0;
+        margin: 2vh 4vw 0 4vw;
+        background:transparent;
+        display:flex;
+        justify-content: space-between;
+    }
+    .navbar-nav li:nth-child(1), .navbar-nav li:nth-child(2), .navbar-nav li:nth-child(3), .navbar-nav li:nth-child(4){
+    margin: 0 1vw 0 0;
+}
+}

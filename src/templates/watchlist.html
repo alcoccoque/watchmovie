@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block head %}
+  <script src="https://kit.fontawesome.com/a0043d9bc2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/recommend.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slider.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css'>
+{% endblock %}
+{% block title %}
+    Welcome to Jim Shaped Coding Market
+{% endblock %}
+{% block content %}
+    <center>
+    <h2>Your watchlist</h2>
+    </center>
+      <div class="slider-block">
+      <button type="button" id="moveLeft" class="btn-nav">
+        ᐊ
+      </button>
+      <div class="slider" id="mySlider">
+          {% for title, poster, popularity, genres, rating, id in movie_cards if not movie_cards.hidden %}
+        <div class="film" id="movie0" title="{{title}}">
+          <img alt="{{details}} - poster" src={{poster}}>
+          <div class="description">
+            <div class="description__buttons-container">
+              <div data-id="{{id}}" class="description__button add-to-watch-list">
+                  <i class="fas fa-plus"></i>
+              </div>
+            </div>
+            <div class="description__text-container">
+              <span class="description__rating">{{rating}}</span>
+              <span class="description__popularity">{{popularity}}%</span>
+              <br><br>
+              {% for genre in genres %}
+              <span>{{genre}}  </span>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+          {% endfor %}
+      </div>
+      <button type="button" id="moveRight" class="btn-nav">
+        ᐅ
+      </button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/slider.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/watchlist.js') }}"></script>
+</body>
+{% endblock %}

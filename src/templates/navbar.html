@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-md fixed-top trn navbar-dark">
+      <a class="navbar-brand" href="{{ url_for('main.home') }}">
+        <img src="/static/img/logo.png" alt="Watch Movies">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          {% if current_user.is_authenticated %}
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link"  href="{{ url_for('main.search') }}">Find</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"  href="{{ url_for('main.watchlist') }}">Watchlist</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"  href="{{ url_for('main.randomfilm') }}">Random</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Welcome, {{ current_user.username }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
+                </li>
+            </ul>
+          {% else %}
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('auth.register') }}">Register</a>
+                </li>
+            </ul>
+          {% endif %}
+      </div>
+    </nav>

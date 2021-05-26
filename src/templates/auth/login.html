@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+    Login Page
+{% endblock %}
+
+{% block content %}
+<body class="popcorn-glasses auth-body">
+    <div class="container glass-form">
+        <form method="POST" class="form-register">
+            {{ form.hidden_tag() }}
+            <p>Please Login</p>
+            {{ form.username.label() }}
+            {{ form.username(class="form-control", placeholder="User Name") }}
+
+            {{ form.password.label() }}
+            {{ form.password(class="form-control", placeholder="Password") }}
+
+            <br>
+
+
+            <div class="d-flex flex-column">
+               <h6 class="label-small">Do not have an account?</h6>
+               <a class="btn buttt" href="{{ url_for('auth.register') }}">Register</a>
+            </div>
+            <br>
+            <div class="d-flex flex-column">
+               <h6 class="label-small">Forgot your password?</h6>
+               <a class="btn buttt" href="{{ url_for('auth.reset_password_request') }}">Reset</a>
+            </div>
+            <br>
+            {{ form.submit(class="btn btn-lg btn-block butt") }}
+
+        </form>
+    </div>
+</body>
+{% endblock %}

@@ -1,0 +1,334 @@
+body{
+background-color:black;
+}
+
+.movie_desc {
+    height:70vh;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction:column;
+}
+.mcontent {
+    padding: 0 5vw;
+}
+.search-block {
+    padding: 30vh 0 0 0;
+}
+#films_list {
+    position:absolute;
+    padding: 0;
+    margin: 0;
+}
+#films_list li {
+   width:30vw;
+   border-radius: 1rem;
+}
+.form{
+    padding: 0 40px;
+    margin-top: 30px;
+    text-align: center;
+    color: white;
+}
+#autoComplete {
+    border: none;
+    border-radius: 1rem;
+    width: 30vw;
+    padding: 0 2rem 0 3.5rem;
+    height: 3rem;
+    background-size: 1.5rem;
+    color: black;
+    background-position: right 1.05rem top .7rem;
+    background-repeat: no-repeat;
+}
+.autoComplete_result {
+    max-width: 30vw;
+}
+#autoComplete:hover {
+    width: 30vw;
+}
+.removeIcon {
+    background-image:none !important;
+}
+#autoComplete:focus {
+    padding: 0 2rem 0 3.5rem;
+    color: rgba(255,122,122,1);
+    height: 3rem;
+    width: 30vw;
+    border: none;
+    background-image: url(./images/magnifier.svg);
+    background-size: 1.5rem;
+    background-position: left 1.05rem top .8rem;
+    box-shadow: rgb(255 122 122 / 10%) 0 0 20px 5px;
+}
+.movie-button{
+    margin: 2vh 0 0 0;
+    width:10vw;
+    border-radius: 18px !important;
+    color: white;
+    text-align: center;
+    background: rgba( 0, 0, 0, 0.15 );
+    background-color: none;
+    border: 1px white solid !important;
+}
+input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].btn-block{
+    width:30%;
+}
+.movie-button:hover {
+	cursor: pointer;
+	background: rgba( 255, 255, 255, 0.65 );
+}
+.btn-block {
+    min-width: 45%;
+}
+.movie-content {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content:center;
+	background-color:black;
+}
+
+.movie-content > div {
+    margin:10px;
+}
+
+.btn-block{
+	width: 15%;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	color: #e4e0e0;
+}
+
+
+
+#details {
+	padding: 0 5vh 0 15vh;
+}
+.character {
+    color:#756969;
+    font-size: 20px;
+}
+.footer {
+	color: #e4e0e0;
+	text-align:right;
+	position: fixed;
+ 	bottom: 20px;
+ 	right: 20px;
+ 	width: 100%;
+}
+
+.text {
+    color:white;
+    font-weight: bold;
+    margin-top: 3vh;
+    font-size: 28px;
+ }
+
+.github-corner:hover .octo-arm {
+  	animation: octocat-wave 560ms ease-in-out;
+}
+
+@keyframes octocat-wave {
+  0%,
+  100% {
+    transform: rotate(0)
+  }
+
+  20%,
+  60% {
+    transform: rotate(-25deg)
+  }
+
+  40%,
+  80% {
+    transform: rotate(10deg)
+  }
+}
+
+
+#name {
+	color: white;
+	padding: 1px;
+}
+
+h6 {
+    margin-bottom: 20px;
+}
+@media only screen and (max-width: 1440px) {
+    .card-title{
+    font-size:10px;
+    }
+    .character {
+    color:#756969;
+    font-size: 10px;
+    }
+}
+@media only screen and (max-width: 650px) {
+    .mcontent {
+      display: block;
+    }
+    .poster-lg {
+      display: none;
+    }
+    #details {
+		margin-left: 30px;
+	}
+    #loader {
+		display: none;
+		position: fixed;
+		z-index: 100;
+		left: 0;
+		top:0;
+		width: 100%;
+		height: 100%;
+		background-image: url("../static/loader.gif");
+		background-size: 40%;
+		background-position: 50% 50%;
+		background-color: rgba(255, 255, 255, 1);
+		background-repeat: no-repeat;
+		-webkit-transition: background-image 0.2s ease-in-out;
+		transition: background-image 0.2s ease-in-out;
+	}
+
+	#loader-text {
+		vertical-align: middle;
+		color:white;
+	}
+
+
+	svg[data-toggle=tooltip] {
+		width: 50px;
+		height: 50px;
+	}
+}
+
+@media only screen and (max-width: 991px) {
+	.modal-body{
+		display: block;
+	}
+	.profile-pic {
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+		margin-bottom: 20px;
+	}
+	.card-body {
+	display:none
+	}
+}
+@media only screen and (min-width: 992px) {
+	.modal-body {
+		display: flex;
+	}
+}
+
+@media only screen and (min-width: 651px) {
+  .poster-sm {
+    display: none;
+   }
+
+	.mcontent {
+		display: flex;
+		flex-wrap: nowrap;
+	}
+
+	#loader {
+		display: none;
+		position: fixed;
+		z-index: 100;
+		left: 0;
+		top:0;
+		width: 100%;
+		height: 100%;
+		background-image: url("../static/loader.gif");
+		background-size: 20%;
+		background-position: 50% 50%;
+		background-color: rgba(255, 255, 255, 1);
+		background-repeat: no-repeat;
+		-webkit-transition: background-image 0.2s ease-in-out;
+		transition: background-image 0.2s ease-in-out;
+	}
+
+	#loader-text {
+		vertical-align: middle;
+		color:white;
+	}
+
+}
+
+.poster{
+    width: 250px;
+}
+
+.card:hover {
+	cursor: pointer;
+}
+.card{
+    width: 10vw;
+}
+.castcard:hover {
+    cursor: pointer;
+}
+
+.cast-img {
+	filter: brightness(100%);
+	-moz-transition: all 0.75s ease;
+    -webkit-transition: all 0.75s ease;
+	transition: all 0.75s ease;
+}
+
+
+.cast-img:hover {
+	filter: brightness(50%);
+	-moz-transition: all 0.75s ease;
+    -webkit-transition: all 0.75s ease;
+    transition: all 0.75s ease;
+}
+
+.fig {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	backdrop-filter: brightness(50%);
+	position: absolute;
+	bottom: 0px;
+	top: 0px;
+	right: 0px;
+	left: 0px;
+	opacity: 0;
+	-moz-transition: all 0.75s ease;
+    -webkit-transition: all 0.75s ease;
+    transition: all 0.75s ease;
+}
+
+.fig:hover {
+	opacity: 1;
+	backdrop-filter:br;
+	-moz-transition: all 0.75s ease;
+    -webkit-transition: all 0.75s ease;
+    transition: all 0.75s ease;
+}
+
+.card-btn {
+	border-radius: 20px;
+}
+
+.imghvr {
+	position: relative;
+}
+
+.table td {
+    border-color: white;
+    border-style:solid;
+    border-width:1px;
+}
+
+.fail {
+	display: none;
+	color: white;
+}
+.card-title{
+    font-size:14px;
+}

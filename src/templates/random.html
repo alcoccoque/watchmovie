@@ -1,0 +1,35 @@
+
+{% extends 'base.html' %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/recommend.css') }}">
+{% endblock %}
+{% block title %}
+    Welcome to Jim Shaped Coding Market
+{% endblock %}
+{% block content %}
+<body class="collection">
+
+	<div class="d-flex flex-column justify-content-center align-items-center search-block">
+    <center><p class="text">Try your luck and get a random movie to see!</p></center>
+        <form method="POST">
+    <div class="form-group">
+      <input class="btn movie-button" type='submit' value="Get random movie">
+    </div>
+        </form>
+	</div>
+
+  <div id="loader" class="text-center">
+  </div>
+  
+  <div class="fail">
+    <center><h3>Something go wrong. Please try again!</h3></center>
+  </div>
+
+	<div class="results">
+    <center>
+      <h2 id="name" class="text-uppercase"></h2>
+    </center>
+	</div>
+
+</body>
+{% endblock %}

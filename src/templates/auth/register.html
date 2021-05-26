@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}
+    Register Page
+{% endblock %}
+
+{% block content %}
+<body class="popcorn auth-body">
+    <div class="container glass-form marg5">
+        <form method="POST" class="form-register">
+            {{ form.hidden_tag() }}
+            <p>
+                Please Create your Account
+            </p>
+
+            {{ form.username.label() }}
+            {{ form.username(class="form-control", placeholder="User Name") }}
+
+            {{ form.email.label() }}
+            {{ form.email(class="form-control", placeholder="Email Address") }}
+
+            {{ form.password.label() }}
+            {{ form.password(class="form-control", placeholder="Password") }}
+
+            {{ form.password2.label() }}
+            {{ form.password2(class="form-control", placeholder="Confirm Password") }}
+
+            <br>
+
+            <div class="d-flex flex-column">
+               <h6 class="label-small">Already have an account?</h6>
+               <a class="btn buttt" href="{{ url_for('auth.login') }}">Login</a>
+            </div>
+
+
+
+            {{ form.submit(class="btn btn-lg btn-block butt") }}
+
+        </form>
+    </div>
+</body>
+{% endblock %}
