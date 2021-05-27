@@ -3,7 +3,7 @@ background-color:black;
 }
 
 .movie_desc {
-    height:70vh;
+    height:100vh;
     background-color: black;
     display: flex;
     align-items: center;
@@ -12,6 +12,7 @@ background-color:black;
 }
 .mcontent {
     padding: 0 5vw;
+    align-items:center;
 }
 .search-block {
     padding: 30vh 0 0 0;
@@ -31,6 +32,10 @@ background-color:black;
     text-align: center;
     color: white;
 }
+.poster{
+    width: 20vw;
+    border-radius:20px;
+}
 #autoComplete {
     border: none;
     border-radius: 1rem;
@@ -44,6 +49,11 @@ background-color:black;
 }
 .autoComplete_result {
     max-width: 30vw;
+}
+.rec-name{
+    margin-top:50px;
+    color:white;
+    font-size: 2.5vw;
 }
 #autoComplete:hover {
     width: 30vw;
@@ -85,6 +95,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 .movie-content {
 	display: flex;
 	flex-wrap: wrap;
+	align-items:center;
 	justify-content:center;
 	background-color:black;
 }
@@ -101,10 +112,16 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 	color: #e4e0e0;
 }
 
+#title, #overview, #vote_average, #genres, #date, #runtime, #status{
+    font-size: 1vw;
+    color: white;
+}
 
 
 #details {
-	padding: 0 5vh 0 15vh;
+    font-size: 1.5vw;
+    width: 55vw;
+	padding: 0 5vh 0 5vh;
 }
 .character {
     color:#756969;
@@ -172,9 +189,6 @@ h6 {
     .poster-lg {
       display: none;
     }
-    #details {
-		margin-left: 30px;
-	}
     #loader {
 		display: none;
 		position: fixed;
@@ -202,6 +216,11 @@ h6 {
 		width: 50px;
 		height: 50px;
 	}
+	.rec-name{
+    margin-top:50px;
+    color:white;
+    font-size: 5vw;
+}
 }
 
 @media only screen and (max-width: 991px) {
@@ -217,6 +236,19 @@ h6 {
 	.card-body {
 	display:none
 	}
+	#title, #overview, #vote_average, #genres, #date, #runtime, #status{
+    font-size: 2vw;
+    color: white;
+    }
+    #details {
+    font-size: 1.5vw;
+    width: 55vw;
+	padding: 0 0 0 5vh;
+    }
+    .poster{
+    width: 35vw;
+    }
+
 }
 @media only screen and (min-width: 992px) {
 	.modal-body {
@@ -258,9 +290,6 @@ h6 {
 
 }
 
-.poster{
-    width: 250px;
-}
 
 .card:hover {
 	cursor: pointer;

@@ -1,38 +1,4 @@
-2021-05-25 11:10:54,790 INFO: Watchmovie startup [in C:\Users\Vivo\Desktop\Proga\Flask\watch_movie_test\src\__init__.py:74]
-2021-05-25 11:10:56,790 INFO: Watchmovie startup [in C:\Users\Vivo\Desktop\Proga\Flask\watch_movie_test\src\__init__.py:74]
-2021-05-25 13:03:47,751 INFO: Watchmovie startup [in C:\Users\Vivo\Desktop\Proga\Flask\heroku-app\heroku\src\__init__.py:74]
-2021-05-25 13:03:50,225 INFO: Watchmovie startup [in C:\Users\Vivo\Desktop\Proga\Flask\heroku-app\heroku\src\__init__.py:74]
-2021-05-25 13:07:43,501 INFO: Watchmovie startup [in C:\Users\Vivo\Desktop\Proga\Flask\heroku-app\heroku\src\__init__.py:74]
-2021-05-25 15:36:42,128 INFO: Watchmovie startup [in /home/alcoccoque/heroku-app/heroku/src/__init__.py:74]
-2021-05-25 15:39:37,485 INFO: Watchmovie startup [in /home/alcoccoque/heroku-app/heroku/src/__init__.py:74]
-2021-05-25 15:40:06,109 ERROR: Exception on /movie/result [GET] [in /home/alcoccoque/heroku-app/heroku/env/lib/python3.8/site-packages/flask/app.py:1454]
-Traceback (most recent call last):
-  File "/home/alcoccoque/heroku-app/heroku/env/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/alcoccoque/heroku-app/heroku/env/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/alcoccoque/heroku-app/heroku/env/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/alcoccoque/heroku-app/heroku/env/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "/home/alcoccoque/heroku-app/heroku/src/main/routes.py", line 70, in result
-    title, poster, popularity, genres, overview, vote_average, vote_count, release_date, runtime, \
-TypeError: cannot unpack non-iterable NoneType object
-2021-05-25 15:41:02,690 ERROR: Exception on /random/result [GET] [in /home/alcoccoque/heroku-app/heroku/env/lib/python3.8/site-packages/flask/app.py:1454]
-Traceback (most recent call last):
-  File "/home/alcoccoque/heroku-app/heroku/env/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/alcoccoque/heroku-app/heroku/env/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/alcoccoque/heroku-app/heroku/env/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/alcoccoque/heroku-app/heroku/env/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "/home/alcoccoque/heroku-app/heroku/src/main/routes.py", line 72, in result
-    return render_template('result.html', title=title, overview=overview, poster=poster,
-UnboundLocalError: local variable 'overview' referenced before assignment
-2021-05-26 10:29:18,835 INFO: Watchmovie startup [in C:\Users\Vivo\Desktop\heroku-app\watchmovie\src\__init__.py:74]
-2021-05-26 10:30:08,294 ERROR: Exception on /random/result [GET] [in D:\Programs\Anaconda\envs\watchmovie\lib\site-packages\flask\app.py:1454]
+2021-05-26 18:14:37,959 ERROR: Exception on /search [GET] [in D:\Programs\Anaconda\envs\watchmovie\lib\site-packages\flask\app.py:1454]
 Traceback (most recent call last):
   File "D:\Programs\Anaconda\envs\watchmovie\lib\site-packages\flask\app.py", line 2070, in wsgi_app
     response = self.full_dispatch_request()
@@ -42,10 +8,15 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "D:\Programs\Anaconda\envs\watchmovie\lib\site-packages\flask\app.py", line 1499, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "C:\Users\Vivo\Desktop\heroku-app\watchmovie\src\main\routes.py", line 72, in result
-    return render_template('result.html', title=title, overview=overview, poster=poster,
-UnboundLocalError: local variable 'overview' referenced before assignment
-2021-05-26 10:30:14,604 ERROR: Exception on /movie/result [GET] [in D:\Programs\Anaconda\envs\watchmovie\lib\site-packages\flask\app.py:1454]
+  File "D:\Programs\Anaconda\envs\watchmovie\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\Vivo\Desktop\heroku-app\watchmovie\src\main\routes.py", line 47, in search
+    suggestions = get_suggestions()
+  File "C:\Users\Vivo\Desktop\heroku-app\watchmovie\ml\trained_model.py", line 35, in get_suggestions
+    return list(data['movie_title'].str.capitalize())
+TypeError: string indices must be integers
+2021-05-26 18:33:48,384 INFO: Watchmovie startup [in C:\Users\Vivo\Desktop\heroku-app\watchmovie\src\__init__.py:74]
+2021-05-26 18:33:52,205 ERROR: Exception on /search [GET] [in D:\Programs\Anaconda\envs\watchmovie\lib\site-packages\flask\app.py:1454]
 Traceback (most recent call last):
   File "D:\Programs\Anaconda\envs\watchmovie\lib\site-packages\flask\app.py", line 2070, in wsgi_app
     response = self.full_dispatch_request()
@@ -55,6 +26,39 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "D:\Programs\Anaconda\envs\watchmovie\lib\site-packages\flask\app.py", line 1499, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "C:\Users\Vivo\Desktop\heroku-app\watchmovie\src\main\routes.py", line 70, in result
-    title, poster, popularity, genres, overview, vote_average, vote_count, release_date, runtime, \
-TypeError: cannot unpack non-iterable NoneType object
+  File "D:\Programs\Anaconda\envs\watchmovie\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\Vivo\Desktop\heroku-app\watchmovie\src\main\routes.py", line 47, in search
+    suggestions = get_suggestions()
+  File "C:\Users\Vivo\Desktop\heroku-app\watchmovie\ml\trained_model.py", line 36, in get_suggestions
+    return list(data['movie_title'].str.capitalize())
+TypeError: string indices must be integers
+2021-05-26 18:36:39,451 INFO: Watchmovie startup [in C:\Users\Vivo\Desktop\heroku-app\watchmovie\src\__init__.py:74]
+2021-05-26 20:13:40,992 INFO: Watchmovie startup [in C:\Users\Vivo\Desktop\heroku-app\watchmovie\src\__init__.py:74]
+2021-05-26 20:14:35,136 INFO: Watchmovie startup [in C:\Users\Vivo\Desktop\heroku-app\watchmovie\src\__init__.py:74]
+2021-05-26 20:14:49,261 INFO: Watchmovie startup [in C:\Users\Vivo\Desktop\heroku-app\watchmovie\src\__init__.py:74]
+2021-05-26 20:38:11,972 INFO: Watchmovie startup [in C:\Users\Vivo\Desktop\heroku-app\watchmovie\src\__init__.py:74]
+2021-05-26 20:39:45,262 INFO: Watchmovie startup [in C:\Users\Vivo\Desktop\heroku-app\watchmovie\src\__init__.py:74]
+2021-05-26 21:02:58,076 INFO: Watchmovie startup [in C:\Users\Vivo\Desktop\heroku-app\watchmovie\src\__init__.py:74]
+2021-05-26 21:03:00,562 ERROR: Exception on /auth/login [GET] [in D:\Programs\Anaconda\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "D:\Programs\Anaconda\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Programs\Anaconda\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Programs\Anaconda\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Programs\Anaconda\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\Vivo\Desktop\heroku-app\watchmovie\src\auth\routes.py", line 17, in login
+    print(form.remember_me.data)
+AttributeError: 'LoginForm' object has no attribute 'remember_me'
+2021-05-26 21:03:25,177 INFO: Watchmovie startup [in C:\Users\Vivo\Desktop\heroku-app\watchmovie\src\__init__.py:74]
+2021-05-26 23:20:36,103 INFO: Watchmovie startup [in C:\Users\Vivo\Desktop\heroku-app\watchmovie\src\__init__.py:74]
+2021-05-27 09:06:03,182 INFO: Watchmovie startup [in C:\Users\Vivo\Desktop\heroku-app\watchmovie\src\__init__.py:74]
+2021-05-27 09:07:13,980 INFO: Watchmovie startup [in C:\Users\Vivo\Desktop\heroku-app\watchmovie\src\__init__.py:74]
+2021-05-27 09:13:54,485 INFO: Watchmovie startup [in C:\Users\Vivo\Desktop\heroku-app\watchmovie\src\__init__.py:74]
+2021-05-27 09:44:49,527 INFO: Watchmovie startup [in C:\Users\Vivo\Desktop\heroku-app\watchmovie\src\__init__.py:74]
+2021-05-27 09:48:30,161 INFO: Watchmovie startup [in C:\Users\Vivo\Desktop\heroku-app\watchmovie\src\__init__.py:74]
+2021-05-27 09:49:16,684 INFO: Watchmovie startup [in C:\Users\Vivo\Desktop\heroku-app\watchmovie\src\__init__.py:74]
+2021-05-27 09:51:34,097 INFO: Watchmovie startup [in C:\Users\Vivo\Desktop\heroku-app\watchmovie\src\__init__.py:74]

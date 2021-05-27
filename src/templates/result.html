@@ -20,20 +20,20 @@
 	<br>
     <div class="mcontent">
       <div class="poster-lg">
-        <img class="poster" style="border-radius: 40px;margin-left: 90px;" height="400" width="250" src={{poster}}>
+        <img class="poster" src={{poster}}>
       </div>
       <div class="poster-sm text-center">
-        <img class="poster" style="border-radius: 40px;margin-bottom: 5%;" height="400" width="250" src={{poster}}>
+        <img class="poster" src={{poster}}>
       </div>
       <div id="details">
         <br/>
-        <h6 id="title" style="color:white;">TITLE: &nbsp;{{title}}</h6>
-        <h6 id="overview" style="color:white;max-width: 85%">OVERVIEW: <br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{overview}}</h6>
-        <h6 id="vote_average" style="color:white;">RATING: &nbsp;{{vote_average}}/10 ({{vote_count}} votes)</h6>
-        <h6 id="genres" style="color:white;">GENRE: &nbsp;{{genres}}</h6>
-        <h6 id="date" style="color:white;">RELEASE DATE: &nbsp;{{release_date}}</h6>
-        <h6 id="runtime" style="color:white;">RUNTIME: &nbsp;{{runtime}}</h6>
-        <h6 id="status" style="color:white;">STATUS: &nbsp;{{status}}</h6>
+        <h6 id="title">TITLE: {{title}}</h6>
+        <h6 id="overview">OVERVIEW: <br/>{{overview}}</h6>
+        <h6 id="vote_average">RATING: {{vote_average}}/10 ({{vote_count}} votes)</h6>
+        <h6 id="genres">GENRE: {{'  '.join(genres)}}</h6>
+        <h6 id="date">RELEASE DATE: {{release_date}}</h6>
+        <h6 id="runtime">RUNTIME: {{runtime}}</h6>
+        <h6 id="status">STATUS: {{status}}</h6>
       </div>
     </div>
 </div>
@@ -151,7 +151,7 @@
 </svg>
 
     <center>
-    <h2>Recommended for you</h2>
+    <h2 class="rec-name">Recommended for you</h2>
     </center>
       <div class="slider-block">
       <button type="button" id="moveLeft" class="btn-nav">

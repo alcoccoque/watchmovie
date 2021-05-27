@@ -1,29 +1,20 @@
-from datetime import datetime
 import os
 from src import app
 from flask import render_template, flash, redirect, url_for, request, send_from_directory
 from flask_login import current_user, login_required
 from src import db
 from src.main.forms import MovieForm
-from src.database.models import User, Watchlist
+from src.database.models import Watchlist
 from src.main import main
-from src.ml.trained_model import get_suggestions
+from ml.trained_model import get_suggestions
 from get_info import get_info, get_random, get_request
 from get_info import get_movie_object, get_movie_info
-
-@main.before_app_request
-def before_request():
-    if current_user.is_authenticated:
-        current_user.last_seen = datetime.utcnow()
-        db.session.commit()
 
 
 @main.route('/')
 @main.route('/home')
 @main.route('/index')
 def home():
-    # if current_user:
-    #     return render_template('search.html')
     return render_template('home.html', title=('Home'))
 
 @main.route('/favicon.ico')
@@ -49,12 +40,14 @@ def search():
 
 
 @main.route("/random", methods=['GET', "POST"])
+@login_required
 def randomfilm():
     if request.method == "POST":
         return redirect(url_for('.result', page_state='random'))
     return render_template('random.html')
 
 @main.route('/<page_state>/result', methods=['GET', 'POST'])
+@login_required
 def result(page_state):
     title = request.args.get('title')
     if not title:
@@ -76,19 +69,10 @@ def result(page_state):
                            reviews=movie_reviews, casts=casts, cast_details=cast_details, page_state=page_state)
 
 
-# @main.route("/similarity", methods=["POST"])
-# def similarity():
-#     movie = request.form['name']
-#     rc = rcmd(movie)
-#     if type(rc) == type('string'):
-#         return rc
-#     else:
-#         m_str = "---".join(rc)
-#         return m_str
-
 
 # watchlist
 @main.route("/watchlist", methods=["GET"])
+@login_required
 def watchlist():
     try:
         user_id = int(current_user.get_id())
@@ -102,9 +86,10 @@ def watchlist():
 
 
 @main.route('/movie/<int:id>', methods=["DELETE"])
+@login_required
 def delete(movie_id=None):
     try:
-        db.session.delete(movie_id)
+        Watchlist.query.filter_by(movie_id=movie_id).delete()
         db.session.commit()
     except:
         return "", 404
@@ -112,6 +97,7 @@ def delete(movie_id=None):
 
 
 @main.route('/movie/<int:movie_id>', methods=["GET"])
+@login_required
 def post(movie_id=None):
     # if current_user.is_authenticated():
     user_id = int(current_user.get_id())

@@ -1,5 +1,5 @@
 from flask import render_template, current_app
-from src.email import send_email
+from src.w_email import send_email
 
 
 def send_password_reset_email(user):
