@@ -1,3 +1,3 @@
 # watchmovie
- Flask rest api movie service
+ Flask web movie service
  https://webservicewatchmovie.herokuapp.com/index
